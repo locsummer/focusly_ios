@@ -1,0 +1,423 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A0001012C10000100000001 /* FocuslyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000012C10000100000001 /* FocuslyApp.swift */; };
+		1A0001022C10000100000002 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000022C10000100000002 /* MainTabView.swift */; };
+		1A0001032C10000100000003 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000032C10000100000003 /* AppConstants.swift */; };
+		1A0001042C10000100000004 /* AppLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000042C10000100000004 /* AppLimit.swift */; };
+		1A0001052C10000100000005 /* BlockSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000052C10000100000005 /* BlockSchedule.swift */; };
+		1A0001062C10000100000006 /* FocusSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000062C10000100000006 /* FocusSession.swift */; };
+		1A0001072C10000100000007 /* DailyStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000072C10000100000007 /* DailyStats.swift */; };
+		1A0001082C10000100000008 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000082C10000100000008 /* UserPreferences.swift */; };
+		1A0001092C10000100000009 /* ScreenTimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000092C10000100000009 /* ScreenTimeManager.swift */; };
+		1A00010A2C1000010000000A /* ShieldManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00000A2C1000010000000A /* ShieldManager.swift */; };
+		1A00010B2C1000010000000B /* DeviceActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00000B2C1000010000000B /* DeviceActivityManager.swift */; };
+		1A00010C2C1000010000000C /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00000C2C1000010000000C /* DashboardViewModel.swift */; };
+		1A00010D2C1000010000000D /* AppLimitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00000D2C1000010000000D /* AppLimitsViewModel.swift */; };
+		1A00010E2C1000010000000E /* FocusTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00000E2C1000010000000E /* FocusTimerViewModel.swift */; };
+		1A00010F2C1000010000000F /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00000F2C1000010000000F /* StatisticsViewModel.swift */; };
+		1A0001102C10000100000010 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000102C10000100000010 /* DashboardView.swift */; };
+		1A0001112C10000100000011 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000112C10000100000011 /* CircularProgressView.swift */; };
+		1A0001122C10000100000012 /* AppLimitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000122C10000100000012 /* AppLimitsView.swift */; };
+		1A0001132C10000100000013 /* AppPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000132C10000100000013 /* AppPickerSheet.swift */; };
+		1A0001142C10000100000014 /* ScheduleConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000142C10000100000014 /* ScheduleConfigView.swift */; };
+		1A0001152C10000100000015 /* FocusTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000152C10000100000015 /* FocusTimerView.swift */; };
+		1A0001162C10000100000016 /* PomodoroSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000162C10000100000016 /* PomodoroSettingsView.swift */; };
+		1A0001172C10000100000017 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000172C10000100000017 /* StatisticsView.swift */; };
+		1A0001182C10000100000018 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000182C10000100000018 /* SettingsView.swift */; };
+		1A0001192C10000100000019 /* DeviceActivityMonitorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000192C10000100000019 /* DeviceActivityMonitorExtension.swift */; };
+		1A00011A2C1000010000001A /* ShieldConfigurationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00001A2C1000010000001A /* ShieldConfigurationExtension.swift */; };
+		1A00011B2C1000010000001B /* ShieldActionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00001B2C1000010000001B /* ShieldActionExtension.swift */; };
+		1A00011C2C1000010000001C /* DeviceActivityReportExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00001C2C1000010000001C /* DeviceActivityReportExtension.swift */; };
+		1A00011D2C1000010000001D /* TotalActivityReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00001D2C1000010000001D /* TotalActivityReport.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1A0000012C10000100000001 /* FocuslyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocuslyApp.swift; sourceTree = "<group>"; };
+		1A0000022C10000100000002 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		1A0000032C10000100000003 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		1A0000042C10000100000004 /* AppLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLimit.swift; sourceTree = "<group>"; };
+		1A0000052C10000100000005 /* BlockSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockSchedule.swift; sourceTree = "<group>"; };
+		1A0000062C10000100000006 /* FocusSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSession.swift; sourceTree = "<group>"; };
+		1A0000072C10000100000007 /* DailyStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStats.swift; sourceTree = "<group>"; };
+		1A0000082C10000100000008 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		1A0000092C10000100000009 /* ScreenTimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeManager.swift; sourceTree = "<group>"; };
+		1A00000A2C1000010000000A /* ShieldManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldManager.swift; sourceTree = "<group>"; };
+		1A00000B2C1000010000000B /* DeviceActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceActivityManager.swift; sourceTree = "<group>"; };
+		1A00000C2C1000010000000C /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		1A00000D2C1000010000000D /* AppLimitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLimitsViewModel.swift; sourceTree = "<group>"; };
+		1A00000E2C1000010000000E /* FocusTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusTimerViewModel.swift; sourceTree = "<group>"; };
+		1A00000F2C1000010000000F /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
+		1A0000102C10000100000010 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		1A0000112C10000100000011 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		1A0000122C10000100000012 /* AppLimitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLimitsView.swift; sourceTree = "<group>"; };
+		1A0000132C10000100000013 /* AppPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPickerSheet.swift; sourceTree = "<group>"; };
+		1A0000142C10000100000014 /* ScheduleConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleConfigView.swift; sourceTree = "<group>"; };
+		1A0000152C10000100000015 /* FocusTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusTimerView.swift; sourceTree = "<group>"; };
+		1A0000162C10000100000016 /* PomodoroSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroSettingsView.swift; sourceTree = "<group>"; };
+		1A0000172C10000100000017 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
+		1A0000182C10000100000018 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		1A0000192C10000100000019 /* DeviceActivityMonitorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceActivityMonitorExtension.swift; sourceTree = "<group>"; };
+		1A00001A2C1000010000001A /* ShieldConfigurationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldConfigurationExtension.swift; sourceTree = "<group>"; };
+		1A00001B2C1000010000001B /* ShieldActionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldActionExtension.swift; sourceTree = "<group>"; };
+		1A00001C2C1000010000001C /* DeviceActivityReportExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceActivityReportExtension.swift; sourceTree = "<group>"; };
+		1A00001D2C1000010000001D /* TotalActivityReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalActivityReport.swift; sourceTree = "<group>"; };
+		1A00001E2C1000010000001E /* Focusly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Focusly.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A00001F2C1000010000001F /* Focusly.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Focusly.entitlements; sourceTree = "<group>"; };
+		1A0000202C10000100000020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1A0000212C10000100000021 = {
+			isa = PBXGroup;
+			children = (
+				1A0000222C10000100000022 /* Focusly */,
+				1A0000232C10000100000023 /* FocuslyDeviceActivityMonitor */,
+				1A0000242C10000100000024 /* FocuslyShieldConfiguration */,
+				1A0000252C10000100000025 /* FocuslyShieldAction */,
+				1A0000262C10000100000026 /* FocuslyDeviceActivityReport */,
+				1A0000272C10000100000027 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1A0000222C10000100000022 /* Focusly */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000282C10000100000028 /* App */,
+				1A0000292C10000100000029 /* Core */,
+				1A00002A2C1000010000002A /* Models */,
+				1A00002B2C1000010000002B /* ViewModels */,
+				1A00002C2C1000010000002C /* Views */,
+				1A00001F2C1000010000001F /* Focusly.entitlements */,
+				1A0000202C10000100000020 /* Info.plist */,
+			);
+			path = Focusly;
+			sourceTree = "<group>";
+		};
+		1A0000282C10000100000028 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000012C10000100000001 /* FocuslyApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		1A0000292C10000100000029 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000032C10000100000003 /* AppConstants.swift */,
+				1A0000082C10000100000008 /* UserPreferences.swift */,
+				1A0000092C10000100000009 /* ScreenTimeManager.swift */,
+				1A00000A2C1000010000000A /* ShieldManager.swift */,
+				1A00000B2C1000010000000B /* DeviceActivityManager.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		1A00002A2C1000010000002A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000042C10000100000004 /* AppLimit.swift */,
+				1A0000052C10000100000005 /* BlockSchedule.swift */,
+				1A0000062C10000100000006 /* FocusSession.swift */,
+				1A0000072C10000100000007 /* DailyStats.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1A00002B2C1000010000002B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				1A00000C2C1000010000000C /* DashboardViewModel.swift */,
+				1A00000D2C1000010000000D /* AppLimitsViewModel.swift */,
+				1A00000E2C1000010000000E /* FocusTimerViewModel.swift */,
+				1A00000F2C1000010000000F /* StatisticsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1A00002C2C1000010000002C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000022C10000100000002 /* MainTabView.swift */,
+				1A0000102C10000100000010 /* DashboardView.swift */,
+				1A0000112C10000100000011 /* CircularProgressView.swift */,
+				1A0000122C10000100000012 /* AppLimitsView.swift */,
+				1A0000132C10000100000013 /* AppPickerSheet.swift */,
+				1A0000142C10000100000014 /* ScheduleConfigView.swift */,
+				1A0000152C10000100000015 /* FocusTimerView.swift */,
+				1A0000162C10000100000016 /* PomodoroSettingsView.swift */,
+				1A0000172C10000100000017 /* StatisticsView.swift */,
+				1A0000182C10000100000018 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1A0000232C10000100000023 /* FocuslyDeviceActivityMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000192C10000100000019 /* DeviceActivityMonitorExtension.swift */,
+			);
+			path = FocuslyDeviceActivityMonitor;
+			sourceTree = "<group>";
+		};
+		1A0000242C10000100000024 /* FocuslyShieldConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				1A00001A2C1000010000001A /* ShieldConfigurationExtension.swift */,
+			);
+			path = FocuslyShieldConfiguration;
+			sourceTree = "<group>";
+		};
+		1A0000252C10000100000025 /* FocuslyShieldAction */ = {
+			isa = PBXGroup;
+			children = (
+				1A00001B2C1000010000001B /* ShieldActionExtension.swift */,
+			);
+			path = FocuslyShieldAction;
+			sourceTree = "<group>";
+		};
+		1A0000262C10000100000026 /* FocuslyDeviceActivityReport */ = {
+			isa = PBXGroup;
+			children = (
+				1A00001C2C1000010000001C /* DeviceActivityReportExtension.swift */,
+				1A00001D2C1000010000001D /* TotalActivityReport.swift */,
+			);
+			path = FocuslyDeviceActivityReport;
+			sourceTree = "<group>";
+		};
+		1A0000272C10000100000027 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1A00001E2C1000010000001E /* Focusly.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1A00002E2C1000010000002E /* Focusly */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A0000352C10000100000035 /* Build configuration list for PBXNativeTarget "Focusly" */;
+			buildPhases = (
+				1A00002F2C1000010000002F /* Sources */,
+				1A0000302C10000100000030 /* Frameworks */,
+				1A0000312C10000100000031 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Focusly;
+			productName = Focusly;
+			productReference = 1A00001E2C1000010000001E /* Focusly.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1A0000322C10000100000032 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					1A00002E2C1000010000002E = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 1A0000382C10000100000038 /* Build configuration list for PBXProject "Focusly" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1A0000212C10000100000021;
+			productRefGroup = 1A0000272C10000100000027 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1A00002E2C1000010000002E /* Focusly */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1A00002F2C1000010000002F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A0001012C10000100000001 /* FocuslyApp.swift in Sources */,
+				1A0001022C10000100000002 /* MainTabView.swift in Sources */,
+				1A0001032C10000100000003 /* AppConstants.swift in Sources */,
+				1A0001042C10000100000004 /* AppLimit.swift in Sources */,
+				1A0001052C10000100000005 /* BlockSchedule.swift in Sources */,
+				1A0001062C10000100000006 /* FocusSession.swift in Sources */,
+				1A0001072C10000100000007 /* DailyStats.swift in Sources */,
+				1A0001082C10000100000008 /* UserPreferences.swift in Sources */,
+				1A0001092C10000100000009 /* ScreenTimeManager.swift in Sources */,
+				1A00010A2C1000010000000A /* ShieldManager.swift in Sources */,
+				1A00010B2C1000010000000B /* DeviceActivityManager.swift in Sources */,
+				1A00010C2C1000010000000C /* DashboardViewModel.swift in Sources */,
+				1A00010D2C1000010000000D /* AppLimitsViewModel.swift in Sources */,
+				1A00010E2C1000010000000E /* FocusTimerViewModel.swift in Sources */,
+				1A00010F2C1000010000000F /* StatisticsViewModel.swift in Sources */,
+				1A0001102C10000100000010 /* DashboardView.swift in Sources */,
+				1A0001112C10000100000011 /* CircularProgressView.swift in Sources */,
+				1A0001122C10000100000012 /* AppLimitsView.swift in Sources */,
+				1A0001132C10000100000013 /* AppPickerSheet.swift in Sources */,
+				1A0001142C10000100000014 /* ScheduleConfigView.swift in Sources */,
+				1A0001152C10000100000015 /* FocusTimerView.swift in Sources */,
+				1A0001162C10000100000016 /* PomodoroSettingsView.swift in Sources */,
+				1A0001172C10000100000017 /* StatisticsView.swift in Sources */,
+				1A0001182C10000100000018 /* SettingsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1A0000302C10000100000030 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1A0000312C10000100000031 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1A0000332C10000100000033 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1A0000342C10000100000034 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1A0000362C10000100000036 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Focusly/Focusly.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Focusly/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.focusly.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		1A0000372C10000100000037 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Focusly/Focusly.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Focusly/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.focusly.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1A0000352C10000100000035 /* Build configuration list for PBXNativeTarget "Focusly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A0000362C10000100000036 /* Debug */,
+				1A0000372C10000100000037 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A0000382C10000100000038 /* Build configuration list for PBXProject "Focusly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A0000332C10000100000033 /* Debug */,
+				1A0000342C10000100000034 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 1A0000322C10000100000032 /* Project object */;
+}

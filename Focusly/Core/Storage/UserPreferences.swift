@@ -98,7 +98,10 @@ public final class UserPreferences {
         let sessions = loadFocusSessions()
         let calendar = Calendar.current
         return sessions
-            .filter { $0.isCompleted && calendar.isDateInToday($0.endTime) }
+            .filter { session in
+                guard session.isCompleted, let endTime = session.endTime ?? Optional(session.startTime) else { return false }
+                return calendar.isDateInToday(endTime)
+            }
             .reduce(0) { $0 + $1.durationMinutes }
     }
     
@@ -107,7 +110,10 @@ public final class UserPreferences {
         let calendar = Calendar.current
         guard let sevenDaysAgo = calendar.date(byAdding: .day, value: -7, to: Date()) else { return 0 }
         return sessions
-            .filter { $0.isCompleted && $0.endTime >= sevenDaysAgo }
+            .filter { session in
+                guard session.isCompleted, let endTime = session.endTime ?? Optional(session.startTime) else { return false }
+                return endTime >= sevenDaysAgo
+            }
             .reduce(0) { $0 + $1.durationMinutes }
     }
     
@@ -119,10 +125,16 @@ public final class UserPreferences {
         var streak = 0
         var checkDate = Date()
         
-        let todayHasSession = sessions.contains { calendar.isDateInToday($0.endTime) }
+        let todayHasSession = sessions.contains { session in
+            let date = session.endTime ?? session.startTime
+            return calendar.isDateInToday(date)
+        }
         if !todayHasSession {
             guard let yesterday = calendar.date(byAdding: .day, value: -1, to: checkDate) else { return 0 }
-            let yesterdayHasSession = sessions.contains { calendar.isDate($0.endTime, inSameDayAs: yesterday) }
+            let yesterdayHasSession = sessions.contains { session in
+                let date = session.endTime ?? session.startTime
+                return calendar.isDate(date, inSameDayAs: yesterday)
+            }
             if !yesterdayHasSession {
                 return 0
             }
@@ -130,7 +142,10 @@ public final class UserPreferences {
         }
         
         while true {
-            let hasSession = sessions.contains { calendar.isDate($0.endTime, inSameDayAs: checkDate) }
+            let hasSession = sessions.contains { session in
+                let date = session.endTime ?? session.startTime
+                return calendar.isDate(date, inSameDayAs: checkDate)
+            }
             if hasSession {
                 streak += 1
                 guard let prevDay = calendar.date(byAdding: .day, value: -1, to: checkDate) else { break }

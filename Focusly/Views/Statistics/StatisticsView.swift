@@ -28,19 +28,26 @@ public struct StatisticsView: View {
                         Text("Top Usage Categories")
                             .font(.headline)
                         
-                        ForEach(viewModel.categoryBreakdown) { item in
-                            VStack(spacing: 6) {
-                                HStack {
-                                    Text(item.categoryName)
-                                        .font(.subheadline.weight(.medium))
-                                    Spacer()
-                                    Text("\(item.minutes) mins")
-                                        .font(.subheadline)
-                                        .foregroundColor(.secondary)
+                        if viewModel.categoryBreakdown.isEmpty {
+                            Text("No category data yet. Start your focus sessions to see detailed breakdowns.")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                                .padding(.vertical, 8)
+                        } else {
+                            ForEach(viewModel.categoryBreakdown) { item in
+                                VStack(spacing: 6) {
+                                    HStack {
+                                        Text(item.categoryName)
+                                            .font(.subheadline.weight(.medium))
+                                        Spacer()
+                                        Text("\(item.minutes) mins")
+                                            .font(.subheadline)
+                                            .foregroundColor(.secondary)
+                                    }
+                                    
+                                    ProgressView(value: item.percentage)
+                                        .accentColor(colorForCategory(item.categoryName))
                                 }
-                                
-                                ProgressView(value: item.percentage)
-                                    .accentColor(colorForCategory(item.categoryName))
                             }
                         }
                     }
@@ -56,7 +63,7 @@ public struct StatisticsView: View {
                             Text("Focusly Smart Insights")
                                 .font(.headline)
                         }
-                        Text("You saved 1h 45m this week by adhering to your Social Media limits! Your focus sessions were most productive on Tuesday mornings.")
+                        Text(viewModel.smartInsights)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
@@ -68,6 +75,9 @@ public struct StatisticsView: View {
             }
             .navigationTitle("Reports & Insights")
             .background(Color(uiColor: .systemGroupedBackground))
+            .onAppear {
+                viewModel.loadStats()
+            }
         }
     }
     

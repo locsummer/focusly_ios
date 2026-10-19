@@ -4,10 +4,10 @@ import FamilyControls
 
 @MainActor
 public final class DashboardViewModel: ObservableObject {
-    @Published public var todayScreenTimeMinutes: Int = 145
-    @Published public var todayFocusMinutes: Int = 50
+    @Published public var todayScreenTimeMinutes: Int = 0
+    @Published public var todayFocusMinutes: Int = 0
     @Published public var dailyGoalMinutes: Int = 120
-    @Published public var streakDays: Int = 4
+    @Published public var streakDays: Int = 0
     @Published public var isQuickBlockActive: Bool = false
     @Published public var activeSchedulesCount: Int = 0
     @Published public var activeLimitsCount: Int = 0
@@ -21,6 +21,9 @@ public final class DashboardViewModel: ObservableObject {
     
     public func loadData() {
         self.dailyGoalMinutes = preferences.dailyGoalMinutes
+        self.todayFocusMinutes = preferences.getTodayFocusMinutes()
+        self.streakDays = preferences.calculateStreakDays()
+        
         let limits = preferences.loadAppLimits()
         let schedules = preferences.loadBlockSchedules()
         

@@ -24,25 +24,8 @@ public final class AppLimitsViewModel: ObservableObject {
         self.blockSchedules = preferences.loadBlockSchedules()
         self.quickShieldSelection = preferences.loadShieldSelection()
         
-        if appLimits.isEmpty && blockSchedules.isEmpty {
-            setupSampleData()
-        }
-    }
-    
-    private func setupSampleData() {
-        let sampleLimit = AppLimit(name: "Social Media Limit", limitMinutes: 45)
-        let sampleSchedule = BlockSchedule(
-            title: "Work Deep Focus",
-            startHour: 9,
-            startMinute: 0,
-            endHour: 17,
-            endMinute: 0,
-            daysOfWeek: [2, 3, 4, 5, 6]
-        )
-        self.appLimits = [sampleLimit]
-        self.blockSchedules = [sampleSchedule]
-        saveLimits()
-        saveSchedules()
+        // Sync monitoring state with active limits and schedules
+        activityManager.syncAllActiveMonitoring(limits: appLimits, schedules: blockSchedules)
     }
     
     public func addLimit(_ limit: AppLimit) {
@@ -59,11 +42,17 @@ public final class AppLimitsViewModel: ObservableObject {
             saveLimits()
             if appLimits[index].isEnabled {
                 activityManager.startLimitMonitoring(limit: appLimits[index])
+            } else {
+                activityManager.stopLimitMonitoring(limit: appLimits[index])
             }
         }
     }
     
     public func deleteLimit(at offsets: IndexSet) {
+        for index in offsets {
+            guard index < appLimits.count else { continue }
+            activityManager.stopLimitMonitoring(limit: appLimits[index])
+        }
         appLimits.remove(atOffsets: offsets)
         saveLimits()
     }
@@ -82,11 +71,17 @@ public final class AppLimitsViewModel: ObservableObject {
             saveSchedules()
             if blockSchedules[index].isEnabled {
                 activityManager.startScheduleMonitoring(schedule: blockSchedules[index])
+            } else {
+                activityManager.stopScheduleMonitoring(schedule: blockSchedules[index])
             }
         }
     }
     
     public func deleteSchedule(at offsets: IndexSet) {
+        for index in offsets {
+            guard index < blockSchedules.count else { continue }
+            activityManager.stopScheduleMonitoring(schedule: blockSchedules[index])
+        }
         blockSchedules.remove(atOffsets: offsets)
         saveSchedules()
     }

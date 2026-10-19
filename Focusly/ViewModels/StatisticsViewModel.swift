@@ -10,22 +10,40 @@ public struct UsageCategoryItem: Identifiable {
 
 @MainActor
 public final class StatisticsViewModel: ObservableObject {
-    @Published public var weeklyTotalHours: Double = 14.2
-    @Published public var dailyAverageHours: Double = 2.0
-    @Published public var phonePickupsCount: Int = 42
+    @Published public var weeklyTotalHours: Double = 0.0
+    @Published public var dailyAverageHours: Double = 0.0
+    @Published public var phonePickupsCount: Int = 0
     @Published public var categoryBreakdown: [UsageCategoryItem] = []
     @Published public var selectedTimeFrame: Int = 0 // 0: Day, 1: Week, 2: Month
+    @Published public var smartInsights: String = "Complete focus sessions and set daily app limits to view your weekly progress."
+    
+    private let preferences = UserPreferences.shared
     
     public init() {
         loadStats()
     }
     
     public func loadStats() {
-        self.categoryBreakdown = [
-            UsageCategoryItem(categoryName: "Social Media", minutes: 95, percentage: 0.45),
-            UsageCategoryItem(categoryName: "Productivity", minutes: 55, percentage: 0.25),
-            UsageCategoryItem(categoryName: "Entertainment", minutes: 35, percentage: 0.18),
-            UsageCategoryItem(categoryName: "Others", minutes: 25, percentage: 0.12)
-        ]
+        let weeklyMins = preferences.getWeeklyTotalFocusMinutes()
+        let weeklyHours = Double(weeklyMins) / 60.0
+        let avgHours = (Double(weeklyMins) / 7.0) / 60.0
+        
+        self.weeklyTotalHours = (weeklyHours * 10).rounded() / 10.0
+        self.dailyAverageHours = (avgHours * 10).rounded() / 10.0
+        
+        let breakdown = preferences.getSessionsBreakdown()
+        if !breakdown.isEmpty {
+            self.categoryBreakdown = breakdown.map {
+                UsageCategoryItem(categoryName: $0.name, minutes: $0.minutes, percentage: $0.percentage)
+            }
+        } else {
+            self.categoryBreakdown = []
+        }
+        
+        if weeklyMins > 0 {
+            self.smartInsights = "You logged \(weeklyMins) minutes of productive focus this week! Maintaining consistency builds long-term productivity habits."
+        } else {
+            self.smartInsights = "No focus sessions logged yet. Tap the Focus tab to start your first Pomodoro session!"
+        }
     }
 }

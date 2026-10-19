@@ -92,4 +92,69 @@ public final class UserPreferences {
         }
         return sessions
     }
+    
+    // MARK: - Real-time Statistics Helpers
+    public func getTodayFocusMinutes() -> Int {
+        let sessions = loadFocusSessions()
+        let calendar = Calendar.current
+        return sessions
+            .filter { $0.isCompleted && calendar.isDateInToday($0.endTime) }
+            .reduce(0) { $0 + $1.durationMinutes }
+    }
+    
+    public func getWeeklyTotalFocusMinutes() -> Int {
+        let sessions = loadFocusSessions()
+        let calendar = Calendar.current
+        guard let sevenDaysAgo = calendar.date(byAdding: .day, value: -7, to: Date()) else { return 0 }
+        return sessions
+            .filter { $0.isCompleted && $0.endTime >= sevenDaysAgo }
+            .reduce(0) { $0 + $1.durationMinutes }
+    }
+    
+    public func calculateStreakDays() -> Int {
+        let sessions = loadFocusSessions().filter { $0.isCompleted }
+        guard !sessions.isEmpty else { return 0 }
+        
+        let calendar = Calendar.current
+        var streak = 0
+        var checkDate = Date()
+        
+        let todayHasSession = sessions.contains { calendar.isDateInToday($0.endTime) }
+        if !todayHasSession {
+            guard let yesterday = calendar.date(byAdding: .day, value: -1, to: checkDate) else { return 0 }
+            let yesterdayHasSession = sessions.contains { calendar.isDate($0.endTime, inSameDayAs: yesterday) }
+            if !yesterdayHasSession {
+                return 0
+            }
+            checkDate = yesterday
+        }
+        
+        while true {
+            let hasSession = sessions.contains { calendar.isDate($0.endTime, inSameDayAs: checkDate) }
+            if hasSession {
+                streak += 1
+                guard let prevDay = calendar.date(byAdding: .day, value: -1, to: checkDate) else { break }
+                checkDate = prevDay
+            } else {
+                break
+            }
+        }
+        return streak
+    }
+    
+    public func getSessionsBreakdown() -> [(name: String, minutes: Int, percentage: Double)] {
+        let sessions = loadFocusSessions().filter { $0.isCompleted }
+        let total = sessions.reduce(0) { $0 + $1.durationMinutes }
+        guard total > 0 else { return [] }
+        
+        var categoryMap: [String: Int] = [:]
+        for s in sessions {
+            let key = s.sessionType.rawValue.capitalized
+            categoryMap[key, default: 0] += s.durationMinutes
+        }
+        
+        return categoryMap.map { (key, mins) in
+            (name: key, minutes: mins, percentage: Double(mins) / Double(total))
+        }.sorted { $0.minutes > $1.minutes }
+    }
 }

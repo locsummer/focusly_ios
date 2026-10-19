@@ -9,6 +9,14 @@ public final class DeviceActivityManager {
     
     private init() {}
     
+    private func activityName(for limit: AppLimit) -> DeviceActivityName {
+        return DeviceActivityName("com.focusly.app.limit.\(limit.id.uuidString)")
+    }
+    
+    private func activityName(for schedule: BlockSchedule) -> DeviceActivityName {
+        return DeviceActivityName("com.focusly.app.schedule.\(schedule.id.uuidString)")
+    }
+    
     /// Starts monitoring scheduled block intervals (e.g. Work hours, Bedtime)
     public func startScheduleMonitoring(schedule: BlockSchedule) {
         let scheduleActivity = DeviceActivitySchedule(
@@ -17,15 +25,20 @@ public final class DeviceActivityManager {
             repeats: true
         )
         
+        let name = activityName(for: schedule)
         do {
-            try center.startMonitoring(
-                AppConstants.ActivityNames.scheduleBlocking,
-                during: scheduleActivity
-            )
+            try center.startMonitoring(name, during: scheduleActivity)
             print("Successfully started monitoring schedule: \(schedule.title)")
         } catch {
             print("Failed to start monitoring schedule: \(error)")
         }
+    }
+    
+    /// Stops monitoring a specific schedule
+    public func stopScheduleMonitoring(schedule: BlockSchedule) {
+        let name = activityName(for: schedule)
+        center.stopMonitoring([name])
+        print("Stopped monitoring schedule: \(schedule.title)")
     }
     
     /// Starts monitoring usage thresholds for app limits (e.g. 30 mins Instagram limit)
@@ -55,24 +68,42 @@ public final class DeviceActivityManager {
             AppConstants.EventNames.warningThreshold: warningEvent
         ]
         
+        let name = activityName(for: limit)
         do {
-            try center.startMonitoring(
-                AppConstants.ActivityNames.dailyLimits,
-                during: schedule,
-                events: events
-            )
+            try center.startMonitoring(name, during: schedule, events: events)
             print("Successfully started monitoring daily limit: \(limit.name)")
         } catch {
             print("Failed to start monitoring daily limit: \(error)")
         }
     }
     
+    /// Stops monitoring a specific daily limit
+    public func stopLimitMonitoring(limit: AppLimit) {
+        let name = activityName(for: limit)
+        center.stopMonitoring([name])
+        print("Stopped monitoring limit: \(limit.name)")
+    }
+    
+    /// Synchronizes all enabled limits and schedules with DeviceActivityCenter
+    public func syncAllActiveMonitoring(limits: [AppLimit], schedules: [BlockSchedule]) {
+        for limit in limits {
+            if limit.isEnabled {
+                startLimitMonitoring(limit: limit)
+            } else {
+                stopLimitMonitoring(limit: limit)
+            }
+        }
+        for schedule in schedules {
+            if schedule.isEnabled {
+                startScheduleMonitoring(schedule: schedule)
+            } else {
+                stopScheduleMonitoring(schedule: schedule)
+            }
+        }
+    }
+    
     /// Stops all activity monitoring
     public func stopAllMonitoring() {
-        center.stopMonitoring([
-            AppConstants.ActivityNames.dailyLimits,
-            AppConstants.ActivityNames.scheduleBlocking,
-            AppConstants.ActivityNames.focusSession
-        ])
+        center.stopMonitoring()
     }
 }
